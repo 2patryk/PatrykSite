@@ -24,6 +24,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
+        dangerous-clean-slate: true
         local-dir: './out/'
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USER }}
