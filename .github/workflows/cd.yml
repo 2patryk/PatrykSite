@@ -12,11 +12,17 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 12
+    - name: Test
+      env:
+        TEST_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TEST_SECRET: ${{ secrets.TEST_SECRET }}
+      run: |
+        echo ${#TEST_GITHUB_TOKEN}
+        echo ${#TEST_SECRET}
     - run: npm install -g yarn
     - run: yarn install --frozen-lockfile
     - name: 🔨 Build Project
       run: yarn build
-    - run: echo ${{ secrets.FTP_SERVER }}
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.1.0
       with:
