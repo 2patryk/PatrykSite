@@ -14,4 +14,11 @@ jobs:
         node-version: 12
     - run: npm install -g yarn
     - run: yarn install --frozen-lockfile
+    - name: 🔨 Build Project
     - run: yarn build
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.1.0
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASSWORD }}
