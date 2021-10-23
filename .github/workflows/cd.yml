@@ -14,11 +14,9 @@ jobs:
         node-version: 12
     - name: Test
       env:
-        TEST_GITHUB_TOKEN: ${{ secrets.FTP_SERVER }}
-        TEST_SECRET: ${{ secrets.FTP_USER }}
+        FTP_SERVER: ${{ secrets.FTP_SERVER }}
       run: |
         echo ${#FTP_SERVER}
-        echo ${#FTP_USER}
     - run: npm install -g yarn
     - run: yarn install --frozen-lockfile
     - name: 🔨 Build Project
